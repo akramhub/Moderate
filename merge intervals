@@ -1,0 +1,40 @@
+import random
+class Intervals:
+    def __init__(self,start,end):
+        self.start=start
+        self.end=end
+I=[]
+for i in range(10):
+    start=random.randint(1,101) 
+    duration=random.randint(1,40)
+    end=start+duration
+    I.append([start,end])
+    
+list_min=[]
+print I
+def func(I):
+    return I[:][0]
+
+I.sort(key=func)
+print I
+
+def has_intersection(current_interval, next_interval):
+    if current_interval[1] >= next_interval[0]:
+        return True
+    else:
+        return False
+
+def merge(current_interval, next_interval):
+    return [current_interval[0], max(current_interval[1], next_interval[1])]
+    
+output = []
+current = I[0]
+for i in range( len(I)-1):
+    if has_intersection(current,I[i+1]):
+        current = merge(current, I[i+1])
+    else:
+        output.append(current)
+        current = I[i+1]
+output.append(current)
+print "!!!!!!!!!!"
+print output
