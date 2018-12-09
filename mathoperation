@@ -1,0 +1,36 @@
+class Math_m:
+    def subtract(self,n1,n2):
+        return n1+self.neg(n2)
+        
+    def neg(self,n):
+        if n<1:
+            sign=1
+        if n>1:
+            sign=-1
+        neg=0    
+        while(n!=0):
+            neg+=sign
+            n +=sign
+            print n,neg
+        return neg
+    def multiply(self,n1,n2):
+        sum=0
+        for i in range(n2):
+            sum+=n1
+        return sum
+    def division(self,n1,n2):
+        d=1
+        diff=n1-n2
+        if diff<0:
+            return 0
+        while(diff>0):
+            diff-=n2
+            d+=1
+        return d
+             
+             
+m=Math_m()
+print m.neg(9)
+print m.subtract(2,9)
+print m.multiply(5,11)
+print m.division(1,4)
