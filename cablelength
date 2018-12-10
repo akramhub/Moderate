@@ -1,0 +1,27 @@
+nodes=[[0,0],[4,4],[3,1],[2,3],[5,5]]
+
+import math
+#define a function that compute the place of the horizontal line to optimal the length of cable in a network
+def calculate_optimal_length_cable(nodes):
+     nodes.sort(key=func)
+     print nodes
+     #position of horizontal cable
+     Y=nodes[len(nodes)/2][1]
+     print Y,"hhhhhhhh"
+     return calculate_length_to_horcable(nodes,Y)
+def func(nodes):
+    return nodes[:][1]
+def calculate_length_to_horcable(nodes,Y):
+    smallest_x=100
+    biggest_x=0
+    sum=0
+    for i in range(len(nodes)):
+        if nodes[i][0]>biggest_x:
+            biggest_x=nodes[i][0]
+        if nodes[i][0]<smallest_x :
+            smallest_x=nodes[i][0]
+            
+        sum=abs(nodes[i][1]-Y)+sum
+        
+    return sum+biggest_x-smallest_x
+print calculate_optimal_length_cable(nodes)
