@@ -1,0 +1,43 @@
+# Question is we have given a landscape up and down as an arry. we want to biuld castles in local min max. find how many castle given a landscape stucture
+# My solution is as follows: first I trim the given arr such that remove unnecessary data points, for example when  a surface is flat, I convert it to a point (e.g., [0,0,0]-->[0])
+#when  a part of land scap is ascending, then we don't need to have middle points until we get to first local maximum, the same for desending, for example [0,1,2,3,1]--> [0,3,1]
+# at the end we come up with local min max points and the length of this array shows the number of castles
+
+arr=[0,0,1,2,2,2,1,1,1,0]
+arr=[0,1,2,2,2,1,0]
+arr=[1,1,1,1,1,1,1]
+arr=[0,0,1,1,1,0,0]
+arr=[0,1,0]
+arr=[1,1,0]
+arr=[1,0,0,1]
+arr=[0,1,0,1,0,1,0,1,1]
+arr=[2,2,1,0]
+def find_local_minmax(arr):
+    print("------------- initial arr---------")
+    print arr
+    newarr=trim(arr)
+    print(" trimmed array----------------------")
+    print newarr
+    return len(newarr)
+def trim(arr):
+    for i in range(len(arr)):
+        print " out of while",i
+        while (i+2<len(arr) and arr[i+1]>=arr[i] and arr[i+2]>=arr[i+1] ):
+            print i, i+1,i+2,"i"
+            print arr[i],arr[i+1],arr[i+2],"arr"
+            del arr[i+1]
+            print "delet shod",arr
+    print "trim down//////////////////////////////////////////////"
+    for i in range(len(arr)):
+        print " out of while",i
+        while ( i+2<len(arr) and arr[i+1]<=arr[i] and arr[i+2]<=arr[i+1] ):
+            print i, i+1,i+2,"i"
+            print arr[i],arr[i+1],arr[i+2],"arr"
+            del arr[i+1]
+            print "delet shod",arr        
+    
+    if (len(arr)==2 and arr[0]==arr[1]):
+        del arr[1]
+    return arr
+    
+print find_local_minmax(arr)
