@@ -1,0 +1,27 @@
+#There is a network, each node shows a city , and there is a captal city . we don't know which node is capital. we want to find the distance from capital based on number of hubs or cities to get to the capitals, e.g., the immidiate neighbors should give o, 
+#T[0]=4, T[1]=1, t[2]=4, T[3]=3,T[4]=1,...
+l=[4,1,4,4,1,1,1,1,2,1]
+#find the capital
+length=[]
+c=[[] for _ in range(len(l)-1)]
+print c
+for i in range(len(l)):
+    if i==l[i]:
+        capital_node=i
+       
+for i in range(len(l)):
+    if l[i]==capital_node  and i!=capital_node:
+        c[0].append(i)
+length.append(len(c[0]))
+print ";;;;;;;;;;;;;;;;;;;;;;;"
+j=1
+while(j<len(l)-1) :
+    for i in range(len(l)):
+        if i not in c[j-1] and i!=capital_node:
+            if l[i] in c[j-1]:
+                c[j].append(i)
+    length.append(len(c[j]))
+    j=j+1
+
+        
+print c,length        
