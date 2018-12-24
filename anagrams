@@ -1,0 +1,20 @@
+from collections import defaultdict
+s="abcdfcba"
+substrset=set()
+c=0
+dic=defaultdict(list)
+for i in range(len(s)):
+    for j in range(i+1,len(s)+1):
+        substr=s[i:j]
+        substrset.add(substr)
+        c=c+1
+print  substrset 
+print c
+for i in substrset:
+    dic[''.join(sorted(i))].append(i)
+print dic
+for keys, valu in dic.iteritems():
+    if len(valu)>1:
+        print valu
+ll=[valu for key,valu in dic.iteritems() if len(valu)>1]
+print ll,"k"
