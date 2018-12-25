@@ -1,0 +1,21 @@
+
+array=[1,2,3,4,5,6,7,8,9,10,11]
+print array, "init"
+def swap(i,j,array):
+    temp=array[i]
+    array[i]=array[j]
+    array[j]=temp
+    return array
+def leftrotate(array,r):
+    
+    n=len(array)
+    for i in range(n-r):
+        swap(i,i+r,array)
+        
+    r_new=r-((n-r)%r)
+    for j in range(n-r,n-r_new):
+        swap(j,j+r_new,array)
+        
+    return array
+
+print leftrotate(array,3)
