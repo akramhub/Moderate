@@ -1,0 +1,31 @@
+
+rr=[1,6,2,3,5,7,4]
+def min_sawpTosort(arr):
+    i=0
+    min_swap=0
+    while(i<len(arr)):
+    
+        swaps=find_cycle(arr,i)
+        
+       
+        min_swap=min_swap+swaps
+        print min_swap,"sawps in this cycle-------------------"
+        i=swaps+1+i
+        print "\n\n\t\tNew cycle starts at index: ",i
+    return min_swap
+        
+def find_cycle(arr,i):
+    swaps=0
+    tmp=i
+    #arr[i]-1!=i
+    print tmp,"tmp-------"
+    print "----------   indexes in this cycle  -------------"
+    while(i<len(arr) and arr[i]-1!=tmp):
+        swaps+=1
+        i=arr[i]-1
+        print i
+    if swaps==0:
+        i+=1
+        
+    return swaps
+print min_sawpTosort(arr),"min # of swaps"
