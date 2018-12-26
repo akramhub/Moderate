@@ -1,0 +1,21 @@
+arr=[1,2,3,5,6,4,7,8]
+def swap(i,j,array):
+    temp=array[i]
+    array[i]=array[j]
+    array[j]=temp
+    return array
+n=len(arr)
+flag_chaotic=False
+sum=0
+for i in range(n):
+    if( arr[i]-i>3 or -1>arr[i]-i):
+        flag_chaotic=True
+    else:
+        sum=sum+abs(arr[i]-1-i)
+        
+        
+print arr
+if flag_chaotic:
+    print "Too Chaotic"
+else:
+    print sum/2,"min"    
