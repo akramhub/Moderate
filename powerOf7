@@ -1,0 +1,23 @@
+def IspowerOf7(n):
+    if abs(n)!=n:
+        n=abs(n)
+        flage_sign="N"
+    else:
+        flage_sign="P"
+    if n%7!=0:
+        return False
+    else:
+        i=0
+        while(n>6):
+            n=n/7
+            i=i+1
+        if (n==1 and flage_sign=='N' and i%2==1):
+            return True,i
+        elif n==1 and flage_sign=='P':
+            return True,i
+        else:
+            return False
+        
+        
+        
+print IspowerOf7(-49*7*7)
