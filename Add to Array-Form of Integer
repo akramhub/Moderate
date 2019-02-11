@@ -1,0 +1,44 @@
+'''For a non-negative integer X, the array-form of X is an array of its digits in left to right order.  For example, if X = 1231, then the array form is [1,2,3,1].
+
+Given the array-form A of a non-negative integer X, return the array-form of the integer X+K.
+
+ 
+
+Example 1:
+
+Input: A = [1,2,0,0], K = 34
+Output: [1,2,3,4]
+Explanation: 1200 + 34 = 1234'''
+
+x=341231
+A=[1,2,9,6,7]
+def findArrayform(A,x):
+    i=0
+    n=len(A)
+    while(x>0 and i<n):
+        A[n-i-1]=A[n-i-1]+x
+        print( A[n-i-1],"A[",n-i-1,"]ppp")
+        x=A[n-i-1]//10
+        A[n-i-1]=A[n-i-1]%10
+        print( A[n-i-1],"A[",n-i-1,"]")
+        i+=1
+    print (A,"A")
+    if(x>0):
+        print (x,"x")
+        print (formarray(x),"x")
+        
+    return formarray(x)+A
+def formarray(x):
+    k=0
+    x1=x
+    while(x1>0):
+        x1=x1//10
+        k+=1
+    a=[]
+    print(k,"k")
+    for i in range(k):
+        a.append((x//(10**(k-1-i)))%10)
+    return a
+print (findArrayform(A,x))
+
+print(341231+12967)
