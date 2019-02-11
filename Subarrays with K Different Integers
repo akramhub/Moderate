@@ -1,0 +1,38 @@
+class Solution(object):
+    def subarraysWithKDistinct(self, A, K):
+        """
+        :type A: List[int]
+        :type K: int
+        :rtype: int
+        """
+        
+        s_as=[]
+        for i in range(len(A)-K+1):
+            c=0
+            j=i
+            s=set()
+            
+            s_a=[]
+            while(c<K and j<len(A)):
+                if A[j] in s:
+                    s_a.append(A[j])
+                    j+=1
+                else:
+                    s.add(A[j])
+                    c+=1
+                    s_a.append(A[j])
+                    j+=1
+            if c==K:
+                s_as.append(s_a)
+                #print( s_as,"1----------------",j)
+                while(j<len(A) and A[j] in s):
+                    s_a=s_a+[A[j]]
+                    s_as.append(s_a)
+                    j+=1
+        return len(s_as)
+            
+A = [1,2,1,2,3]
+K = 2               
+                
+s=Solution()
+print(s.subarraysWithKDistinct(A,K))  
