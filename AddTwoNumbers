@@ -1,0 +1,51 @@
+x=1231
+A=[1,2,9,6,7]
+def findArrayform(n,A):
+    a=[]
+    i=0
+    r_tmp=0
+    while(n>0 and i+1<=len(A)):
+        r=n%10
+        
+        
+        r_new=r+A[-1-i]+r_tmp
+        if r_new>9:
+            a.append(r_new%10)
+            r_tmp=1
+        else:
+            a.append(r_new)
+            r_tmp=0
+            
+        n=n//(10)
+        i+=1
+        print (n,r,i)
+    while (i+1<=len(A)):
+        a.append(A[-i-1]+r_tmp)
+        r_tmp=0
+        i+=1
+    while(n>0):
+        r=n%10
+        n=n//10
+        r_new=r+r_tmp
+        if r_new>9:
+            a.append(r_new%10)
+            r_tmp=1
+        else:
+            a.append(r_new)
+            r_tmp=0
+    if r_tmp>0:
+       a.append(r_tmp) 
+    return a
+def inverse_a(a):
+    n=len(a)
+    for i in range(n//2):
+        tmp=a[i]
+        a[i]=a[n-1-i]
+        a[n-1-i]=tmp
+    return a
+    
+        
+        
+    
+a=findArrayform(x,A)
+print inverse_a(a)
